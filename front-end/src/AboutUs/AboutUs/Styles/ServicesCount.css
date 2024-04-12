@@ -1,0 +1,47 @@
+/* ServicesCount.css */
+
+.services-count {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 100px;
+  }
+  .count-items {
+    text-align: center;
+    padding: 20px;
+    border-radius: 0px 30px 0 30px;
+    background-color: #E0F4FF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Example box shadow */
+    transition: transform 0.3s ease-in-out;
+    width: 400px;
+  }
+  
+  .count-items:hover {
+    
+    background-color:#f5f9fb ;
+  }
+  
+
+  .count-items img {
+    width: 80px; /* Adjust image size as needed */
+    height: 80px; /* Adjust image size as needed */
+    object-fit: contain;
+    margin-bottom: 10px;
+    margin-left: 140px;
+  }
+  
+  .count-items p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #010101;
+  }
+  
+  .count-items h4 {
+    font-size: 30px;
+    color: #000000;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: 800;
+  }
+  

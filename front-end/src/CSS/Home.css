@@ -1,0 +1,105 @@
+:root{
+  --green: #fa8564;
+  --light-grey: #f7f7f7;
+  --dark: #0e1010;
+  --trans: all 0.3s ease-in-out;
+}
+
+.home-page {
+  text-align: center;
+}
+
+
+.background-image {
+  margin: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url("../Assets/Araku.jpg"); /* Replace 'your-image.jpg' with your image file */
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-content {
+  color: white;
+}
+
+.center-content h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.center-content p {
+  font-size: 1.5em;
+}
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 40px 0;
+}
+
+.feature {
+  flex: 1;
+  text-align: left;
+}
+
+.call-to-action {
+  background-color: #00bcd4;
+  color: #fff;
+  padding: 60px 0;
+}
+
+.cta-button {
+  background-color: #4aa6b3;
+  color: #e8e809;
+  padding: 15px 30px;
+  font-size: 18px;
+  border: 15px;
+  border-start-end-radius: 15px;
+  border-start-end-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.cta-button:hover {
+  opacity: 0.9;
+}
+
+.places {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.place-card {
+  width: 30%; /* Adjust the width as needed */
+  margin: 10px; /* Add spacing between place cards */
+  display: flex;
+  flex-direction: column; /* Display place cards in a column */
+  /* align-items: center; */
+}
+
+.img-place {
+  width: 300px;
+  height: 250px;
+  border-radius: 15px;
+  margin-left: 25px;
+}
+
+.explore-btn{
+  background-color: #2A5AFF;
+  padding:10px;
+  border:none;
+  /* width:70%; */
+  color:white;
+  font-size: 20px;
+  margin:10px;
+  border-radius: 7px;
+}
+.explore-btn:hover{
+  opacity:0.8;
+}

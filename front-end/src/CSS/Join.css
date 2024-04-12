@@ -1,0 +1,62 @@
+/* Add this CSS to your stylesheets or use a styling solution of your choice */
+.join-image {
+  background-image: url("../Assets/services-bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh;
+}
+
+.page-container {
+  display: flex;
+  margin-top: 13%;
+  margin-left: 10%;
+  position: absolute;
+
+}
+
+.box {
+  width: 372px;
+  /* height: 480px; */
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* border: 1px solid #ccc; */
+  border-radius: 10px;
+  margin: 20px; /* Add margin to the top of each box */
+}
+
+.box:hover{
+  opacity: 0.8;
+}
+
+.box h3 {
+  margin-top: 25px;
+  font-size: 1.2rem;
+}
+.box p {
+  margin-top: 25px;
+  font-size: 1rem;
+}
+
+
+.join-icon{
+  margin-left: 7rem;
+}
+.box button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #2175fe;
+  padding:1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+

@@ -1,0 +1,89 @@
+/* Navbar styles */
+.nav {
+  height: 4.5rem;
+  width: 100%;
+  transition: 0.3s linear;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* z-index: 40; */
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.08);
+  /* padding: 0 7%; */
+}
+.nav-h1 {
+  margin: 0;
+  font-size: 1.8rem; /* Increase font size */
+}
+
+.nav-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-ul li {
+  margin-right: 20px;
+}
+
+.nav-ul li:last-child {
+  margin-right: 0; /* Remove margin for the last item */
+}
+
+.nav-ul a {
+  text-decoration: none;
+  color: #fff; /* Set link color */
+  font-weight: 500; /* Set font weight */
+  transition: color 0.3s; /* Add smooth transition for color */
+}
+
+.nav-ul a:hover {
+  color: #2a5aff; /* Change color on hover */
+}
+
+/* Your Dashboard styles */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownLink {
+  cursor: pointer;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  /* margin-top: 0.1rem; */
+  background-color: #fff; /* Set background color for dropdown */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  border-radius: 5px; /* Add rounded corners */
+}
+
+.dropdownContent a,
+.dropdownContent span {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s; /* Add smooth transition for background */
+}
+
+.dropdownContent a:hover,
+.dropdownContent span:hover {
+  background-color: #f2f2f2; /* Change background color on hover */
+}
+
+/* Adjust styles for the logout option */
+.dropdownContent span {
+  color: #f00;
+  cursor: pointer;
+}
+
+/* Show the dropdown content when the dropdown is hovered */
+.dropdown:hover .dropdownContent {
+  display: block;
+}

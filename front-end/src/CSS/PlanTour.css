@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;600&display=swap');
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title-wrap {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sm-title {
+  font-size: 18px;
+  color: #3498db;
+}
+.image{
+  height: 200px;
+}
+.lg-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.featured-row {
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.featured-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.featured-item:hover {
+  transform: scale(1.05);
+}
+
+.featured-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.featured-item:hover img {
+  transform: scale(1.1);
+}
+
+.featured-item-content {
+  padding: 15px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.featured-item:hover .featured-item-content {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.featured-item-content span {
+  display: block;
+  margin-bottom: 10px;
+  color: #3498db;
+  transition: color 0.3s ease-in-out;
+}
+
+.featured-item:hover .featured-item-content span {
+  color: #e74c3c;
+}
+
+.featured-item-content i {
+  margin-right: 5px;
+}
+
+.featured-item-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+} */
+
+.featured-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card-hover {
+  /* ... (your existing styles for .card-hover) */
+  margin-bottom: 20px;
+  flex: 0 0 calc(33.3333% - 20px); /* Adjust the width as needed */
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+}

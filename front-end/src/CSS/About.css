@@ -1,0 +1,113 @@
+.about-us {
+    text-align:justify;
+
+  }
+
+  
+.about-content{
+    background-size: 1400px ;
+    padding: 50px 60px;
+    height: 720px;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+}
+
+  
+  .about-content h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .about-content p {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .team-member {
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .team-member p {
+    font-size: 16px;
+    color: #777;
+    margin: 10px 0;
+  }
+  
+  .team-member-photo {
+    max-width: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+ 
+
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+
+
+
+  }
+  
+  .team-member {
+    background-color: rgb(10, 169, 214);
+    border: 1px solid #332c7d;
+    padding: 16px; /* Reduced padding for a more compact design */
+    border-radius: 8px; /* Slightly larger border radius for smoother corners */
+    text-align: center;
+    width: 280px; /* Slightly wider card for better content presentation */
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Increased shadow for a subtle effect */
+  }
+  
+
+  .team-member:hover {
+    /* Add styles for the hover effect here */
+    background-color: #ffffff; /* Change background color on hover */
+    color: #fff; /* Change text color on hover */
+    box-shadow: 0 16px 16px rgba(0, 0, 0, 0.2); /* Adjust box shadow on hover */
+  }
+  .team-member-icon {
+    font-size: 40px; /* Adjust the icon size as needed */
+    color: #555; /* Icon color */
+    margin-bottom: 10px;
+  }
+  
+  
+  .team-member h3 {
+    font-size: 20px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .team-member p {
+    font-size: 16px;
+    color: #120d0d;
+    margin: 10px 0;
+  }
+  

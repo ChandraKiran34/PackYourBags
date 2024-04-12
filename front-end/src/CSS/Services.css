@@ -1,0 +1,26 @@
+.services-row{
+    display:flex;
+    justify-content: space-between;
+}
+
+.services-item span{
+    font-size: 45px;
+}
+.services-item p{
+    line-height: 2rem;
+}
+
+.title-wrap span{
+    font-size: 30px;
+}
+
+.title-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 6rem;
+}
+
+.icon{
+    color:#fff;
+}

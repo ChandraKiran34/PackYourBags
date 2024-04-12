@@ -1,0 +1,163 @@
+/* Placedesc.css */
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .main {
+   
+    padding: 0px;
+    font-family: 'Arial', sans-serif;
+    background-color: #c8ffce;
+    color: #333;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .placename {
+    width: 80%;;
+    margin-left: 30%;
+  }
+  
+  .topmain {
+    display: flex;
+    width: 80%;
+    margin-left: 15%;
+  }
+  
+  .leftimg {
+    height: 400px;
+    width: auto;
+    padding: 0px 10px 10px 10px;
+  }
+  
+  .rightimg {
+    height: 200px;
+    width: auto;
+    padding: 0px 10px 10px 10px;
+  }
+  
+  .bottommain {
+    display: flex;
+    width: 80%;
+    margin-left: 15%;
+  }
+  
+  .leftcontent {
+    width: 650px;
+  }
+  
+  .logo,
+  .logo1 {
+    font-size: x-large;
+  }
+/*   
+  .logo1 {
+    margin-top: 30px;
+  } */
+  
+  .leftcontent h1 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .leftcontent p {
+    color: #666;
+  }
+  
+  .parking {
+    display: flex;
+  }
+  
+  .leftcontent h3 {
+    display: flex;
+    align-items: center;
+    color: #8A2BE2;
+    margin-bottom: 10px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  hr {
+    border: 0.5px solid #ddd;
+  }
+  
+  .parking div {
+    margin-right: 20px;
+  }
+  
+  .parking p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .parking h4 {
+    font-size: 14px;
+    color: #666;
+  }
+  .rightcontent {
+    width: 370px;
+    height: 150px;
+    margin-left: 40px;
+    margin-top: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+    background-color: #fff; /* Background color for the container */
+    overflow: hidden; /* Hide any content that exceeds the container */
+  }
+  
+  .rightcontent h2 {
+    /* margin-left: 20px; */
+    margin-top: 19px;
+    font-size: 24px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+  }
+  
+  .checkin,
+  .checkout {
+    height: 12px;
+    padding: 10px;
+    margin-left: 20px;
+    font-size: 14px; /* Adjust font size as needed */
+    color: #666; /* Text color */
+  }
+  
+  .check {
+    margin: 30px;
+    text-align: center; /* Center the content */
+  }
+  
+  /* Optional: Hover effect for a subtle interactive feel */
+  .rightcontent:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Adjust shadow on hover */
+    transform: translateY(-5px); /* Lift the container slightly on hover */
+  }
+  
+  .booknow {
+    margin-top: 20px;
+    margin-left: 100px;
+    display: inline-block;
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition effects */
+  
+    /* Hover styles */
+    &:hover {
+      background-color: white;
+      color: #4CAF50;
+    }
+  }

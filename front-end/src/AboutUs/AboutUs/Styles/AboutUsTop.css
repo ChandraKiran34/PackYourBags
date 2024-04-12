@@ -1,0 +1,72 @@
+/* AboutUsTop.css */
+
+.aboutus-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Adjust as needed */
+  background-color:rgba(255, 255, 255, 0.927);
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px; /* Adjust spacing as needed */
+  /* margin:30px 100px  150px 100px; */
+}
+
+.aboutus-left {
+  flex: 1; /* Takes remaining space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px; /* Adjust as needed */
+  padding: 10px; /* Adjust spacing as needed */
+}
+
+.aboutus-left h1 {
+  color: #279EFF;
+  font-size: 3.5rem; /* Adjust font size as needed */
+  margin-bottom: 50px;
+  font-weight: 800;
+  margin-left:100px;
+
+}
+
+.aboutus-left p {
+  
+  font-size: 1.1rem; /* Adjust font size as needed */
+  line-height: 1.6; /* Adjust line height as needed */
+  margin-bottom: 15px; /* Adjust spacing as needed */
+  text-indent: 50px;
+  text-align: justify;
+  
+}
+.aboutus-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  margin-left: 100px;
+  margin-top: 200px;
+}
+.aboutus-right img {
+  width: auto;
+  height: auto;
+  height: 250px;
+  border-radius: 5%;
+  transition: transform 0.3s ease-in-out; /* Added a transition for smooth scaling */
+}
+
+.aboutus-right img:hover {
+  transform: scale(1.1); /* Adjust the scale factor as per your preference */
+}
+
+/* Specific styling for the middle image */
+.aboutus-right img:nth-child(2) {
+  width: auto; /* Reset width */
+  height: 350px;
+  margin-top: -50px;
+  transition: transform 0.3s ease-in-out; /* Added a transition for smooth scaling */
+}
+
+.aboutus-right img:nth-child(2):hover {
+  transform: scale(1.1); /* Adjust the scale factor for the middle image on hover */
+}

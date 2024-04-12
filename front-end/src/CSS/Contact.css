@@ -1,0 +1,86 @@
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  padding: 3rem;
+  align-items: center;
+}
+
+.contact-image {
+  flex: 1;
+  transform: scale(0.67);
+}
+
+.contact-form {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 50%;
+}
+
+.contact-form input {
+  padding: 0.7rem;
+  color: black;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid gray;
+}
+
+.contact-form textarea {
+  width: 100%;
+  resize: vertical;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+.contact-form button {
+  padding: 1rem;
+  border-radius: 10px;
+  outline: none;
+  background-color: #2a5aff;
+  color: white;
+  font-size: 1rem;
+  border: none;
+}
+
+.contact-form textarea::placeholder {
+  font-size: 0.9rem;
+}
+
+.contact-cardContainer {
+  display: flex;
+  margin-top:0;
+  justify-content: center;
+  gap: 6rem;
+  margin-bottom:5rem;
+}
+
+.card-contact {
+  display: flex;
+  /* flex-direction: column; */
+  /* border: 1px solid #111; */
+  padding: 1rem;
+  gap:1rem;
+  align-items: center;
+}
+
+
+.card-icon {
+  border-radius: 50%;
+  border: 2px solid red;
+  padding: 14px;
+  font-size: 1.5rem;
+  background-color: #2a5aff;
+  border:none;
+  color:white;
+}
