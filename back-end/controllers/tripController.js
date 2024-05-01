@@ -60,7 +60,9 @@ export const getTripsByUserId = async (req, res) => {
 };
 
 export const getAllTrips = async (req, res) => {
+  console.log("hi 1 backend")
   try {
+    console.log("hi 1 backend")
     const allTrips = await Trip.find()
       .populate('travellerId')
       .populate('guideId')

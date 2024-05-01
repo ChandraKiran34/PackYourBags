@@ -29,19 +29,47 @@ const FakePaymentForm = () => {
 
   useEffect(() => {
     // Fetch agencies based on location
+    
+    // const fetchAutoFillData = async () => {
+    //   const response = await axios
+    //     .get(`http://localhost:9000/trips/autofilldata/${bookingData.location}`)
+    //     .then((res) => {
+    //       console.log(res);
+    //       setHotels(res.data.hotels);
+    //       setAgencies(res.data.agencies);
+    //       setGuides(res.data.guides);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // };
+    const token = localStorage.getItem("token");
+    if(!token)
+    {
+      alert('Sign in required to make a booking')
+      nav('/signin');
+      return;
+    }
     const fetchAutoFillData = async () => {
-      const response = await axios
-        .get(`http://localhost:9000/trips/autofilldata/${bookingData.location}`)
-        .then((res) => {
-          console.log(res);
-          setHotels(res.data.hotels);
-          setAgencies(res.data.agencies);
-          setGuides(res.data.guides);
-        })
-        .catch((err) => {
-          console.log(err);
+      try {
+        const response = await fetch(`http://localhost:9000/trips/autofilldata/${bookingData.location}`,{
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+          },
         });
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log(data);
+        setHotels(data.hotels);
+        setAgencies(data.agencies);
+        setGuides(data.guides);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
     };
+    
 
     fetchAutoFillData();
   }, [bookingData.location]);

@@ -83,13 +83,13 @@ export const getTravellerDetails = async (req, res) => {
     }
 
     // Find the traveller by ID in the database
-    console.log(travellerId)
+    // console.log(travellerId)
     const traveller = await Traveller.findById(travellerId);
 
     if (!traveller) {
       return res.status(404).json({ message: 'Traveller not found' });
     }
-    console.log(traveller)
+    // console.log(traveller)
 
     res.status(200).json(traveller);
   } catch (error) {
