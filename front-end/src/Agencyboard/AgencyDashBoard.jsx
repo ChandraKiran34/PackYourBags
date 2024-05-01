@@ -7,6 +7,7 @@ import AgencyUpdate from './AgencyUpdate';
 import { setAgency } from "../features/agency/AgencySlice.js";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from 'jwt-decode'
+import { backendurl } from '../backendurl.js';
 function AgencyDashBoard() {
   const [expanded, setExpanded] = useState(true);
   const [data, setData] = useState({});
@@ -25,7 +26,7 @@ function AgencyDashBoard() {
         const agencyId = decodedToken.id;
         
         const response = await fetch(
-          `http://localhost:9000/agency/${agencyId}/dashboard`,
+          `${backendurl}/agency/${agencyId}/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include the token in the Authorization header

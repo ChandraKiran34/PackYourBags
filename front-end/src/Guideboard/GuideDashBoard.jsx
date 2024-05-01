@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { jwtDecode } from 'jwt-decode';
 import { useEffect } from 'react';
 import { setGuide } from '../features/guide/GuideSlice';
+import { backendurl } from '../backendurl';
 function GuideDashBoard() {
   const [data, setData] = useState({})
   const dispatch = useDispatch()
@@ -26,7 +27,7 @@ function GuideDashBoard() {
         const guideId = decodedToken.userId;
 
         const response = await fetch(
-          `http://localhost:9000/guide/${guideId}/dashboard`,
+          `${backendurl}/guide/${guideId}/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`,// Include the token in the Authorization header

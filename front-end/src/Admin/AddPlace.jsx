@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { backendurl } from '../backendurl';
 
 const AddDestinationForm = () => {
 
@@ -32,7 +33,7 @@ const AddDestinationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:9000/destinations', {
+    fetch(backendurl+'/destinations', {
       method: 'POST',
       // headers: {
       //   'Content-Type': 'multipart/form-data'

@@ -8,6 +8,7 @@ import UserWish from "./UserWish";
 import { setUser } from "../features/user/UserSlice";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from 'jwt-decode'
+import { backendurl } from "../backendurl";
 function UserDashBoard() {
   const [data, setData] = useState({})
   const dispatch = useDispatch()
@@ -25,7 +26,7 @@ function UserDashBoard() {
         const travellerId = decodedToken.userId;
 
         const response = await fetch(
-          `http://localhost:9000/auth/${travellerId}/dashboard`,
+          `${backendurl}/auth/${travellerId}/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include the token in the Authorization header

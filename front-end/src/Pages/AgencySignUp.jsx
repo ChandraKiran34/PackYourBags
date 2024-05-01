@@ -7,6 +7,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { useAuth } from "../FireBase/AuthContexts";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../FireBase/config";
+import { backendurl } from "../backendurl";
 
 const AgencySignUp = () => {
   // const { signUp, role } = useAuth();
@@ -54,7 +55,7 @@ const AgencySignUp = () => {
       } else {
         // Simulate user registration
         try {
-          const response = await fetch("http://localhost:9000/agency/register", {
+          const response = await fetch(backendurl+"/agency/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

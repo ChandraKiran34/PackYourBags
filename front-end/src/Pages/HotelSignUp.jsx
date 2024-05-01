@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../CSS/Signin.css";
 import validateForm from "./validateForm";
 import { IoArrowBack } from "react-icons/io5";
+import { backendurl } from "../backendurl";
 // import { useAuth } from "../FireBase/AuthContexts";
 // import { addDoc, collection } from "firebase/firestore";
 // import { db } from "../FireBase/config";
@@ -54,7 +55,7 @@ const HotelSignUpComp = () => {
 
         // Simulate user registration
         try {
-          const response = await fetch("http://localhost:9000/hotel/register", {
+          const response = await fetch(backendurl+"/hotel/register", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { IoArrowBack } from "react-icons/io5";
 import { setUser } from "../features/user/UserSlice";
+import { backendurl } from "../backendurl";
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +24,7 @@ const SignIn = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:9000/auth/login", {
+      const response = await fetch(backendurl+"/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

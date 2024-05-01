@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoArrowBack } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../FireBase/AuthContexts";
+import { backendurl } from "../backendurl";
 const HotelSignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +25,7 @@ const HotelSignIn = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:9000/hotel/login", {
+      const response = await fetch(backendurl+"/hotel/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

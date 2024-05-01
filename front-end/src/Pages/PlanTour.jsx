@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 import { MdLocationOn } from "react-icons/md";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { backendurl } from "../backendurl";
 const PlanTour = () => {
   const [productData, setProductData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,7 +15,7 @@ const PlanTour = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:9000/destinations");
+        const response = await fetch(backendurl+"/destinations");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

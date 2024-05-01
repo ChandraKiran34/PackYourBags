@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { setBooking } from "../features/booking/BookingSlice";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import { backendurl } from "../backendurl";
 const FakePaymentForm = () => {
   const dispatch = useDispatch();
   const { id, name } = useParams();
@@ -52,7 +53,7 @@ const FakePaymentForm = () => {
     }
     const fetchAutoFillData = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/trips/autofilldata/${bookingData.location}`,{
+        const response = await fetch(`${backendurl}/trips/autofilldata/${bookingData.location}`,{
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
           },
@@ -121,7 +122,7 @@ const FakePaymentForm = () => {
       console.log(tripData)
 
       // Send trip data to backend to store in database
-      const response = await fetch("http://localhost:9000/trips/createTrip", {
+      const response = await fetch(backendurl+"/trips/createTrip", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

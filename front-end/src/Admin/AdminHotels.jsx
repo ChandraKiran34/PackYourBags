@@ -6,6 +6,7 @@ import { FaHotel } from "react-icons/fa";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../FireBase/config";
 import axios from "axios";
+import { backendurl } from "../backendurl";
 
 const AdminUser = () => {
 
@@ -14,7 +15,7 @@ const AdminUser = () => {
   useEffect(() => {
     async function fetchAllDetails() {
       try {
-        const response = await axios.get('http://localhost:9000/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
+        const response = await axios.get(backendurl+'/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
         console.log(response)
         setUserData(response.data.hotels);
       } catch (error) {
@@ -32,7 +33,7 @@ const AdminUser = () => {
     try {
       console.log(hotelId)
       // Send a DELETE request to your backend API to delete the user by ID
-      await axios.delete(`http://localhost:9000/admin/deletehotel/${hotelId}`);
+      await axios.delete(`${backendurl}/admin/deletehotel/${hotelId}`);
       
       // Update the user data in state by filtering out the deleted user
       setUserData(prevData => prevData.filter(user => user._id !== hotelId));

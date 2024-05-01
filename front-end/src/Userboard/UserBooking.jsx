@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Hampi from "../Assets/Hampi.jpg";
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
+import { backendurl } from "../backendurl";
 
 const bookings = [
   {
@@ -28,7 +29,7 @@ function UserBooking() {
         const token = localStorage.getItem("token");
         const decodedToken = jwtDecode(token);
         const travellerId = decodedToken.userId;
-        const response = await fetch(`http://localhost:9000/trips/allTrips`, {
+        const response = await fetch(`${backendurl}/trips/allTrips`, {
           headers: {
             Authorization: `Bearer ${token}`, // Include the token in the Authorization header
           },

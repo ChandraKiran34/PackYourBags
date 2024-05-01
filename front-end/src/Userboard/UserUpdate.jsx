@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { updateUserDetails } from "../features/user/UserSlice";
 import { jwtDecode } from 'jwt-decode'
+import { backendurl } from '../backendurl';
 function GuideUpdate() {
   // Get user data and token from Redux store
   const { userData, token } = useSelector(state => state.user);
@@ -29,7 +30,7 @@ function GuideUpdate() {
       console.log(decodedToken)
       const travellerId = decodedToken.userId;
       
-      const response = await fetch(`http://localhost:9000/auth/${travellerId}/update`, {
+      const response = await fetch(`${backendurl}/auth/${travellerId}/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -7,6 +7,7 @@ import HotelUpdate from './HotelUpdate';
 import { setHotel } from "../features/hotel/HotelSlice";
 import { useDispatch } from "react-redux";
 import { jwtDecode } from 'jwt-decode'
+import { backendurl } from '../backendurl';
 function HotelDashBoard() {
   const [expanded, setExpanded] = useState(true);
   const [data, setData] = useState({});
@@ -25,7 +26,7 @@ function HotelDashBoard() {
         const hotelId = decodedToken.id;
         
         const response = await fetch(
-          `http://localhost:9000/hotel/${hotelId}/dashboard`,
+          `${backendurl}/hotel/${hotelId}/dashboard`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // Include the token in the Authorization header

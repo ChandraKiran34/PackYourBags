@@ -5,6 +5,7 @@ import "../CSS/Signin.css";
 import validateForm from "./validateForm";
 import { IoArrowBack } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
+import { backendurl } from "../backendurl";
 
 const SignUpComp = () => {
   
@@ -45,7 +46,7 @@ const SignUpComp = () => {
 
     // Submit form data to backend for user registration
     try {
-      const response = await fetch("http://localhost:9000/auth/register", {
+      const response = await fetch(backendurl+"/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

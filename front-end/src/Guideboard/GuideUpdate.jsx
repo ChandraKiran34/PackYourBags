@@ -5,6 +5,7 @@ import {useDispatch} from 'react-redux'
 import { useSelector } from 'react-redux';
 import {updateGuideDetails} from '../features/guide/GuideSlice'
 import {jwtDecode} from 'jwt-decode';
+import { backendurl } from '../backendurl';
 function GuideUpdate() {
   const { guideData, token } = useSelector(state => state.guide);
   // Use state to manage form input values
@@ -35,7 +36,7 @@ function GuideUpdate() {
       console.log(decodedToken)
       const guideId = decodedToken.userId;
       
-      const response = await fetch(`http://localhost:9000/guide/${guideId}/update`, {
+      const response = await fetch(`${backendurl}/guide/${guideId}/update`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

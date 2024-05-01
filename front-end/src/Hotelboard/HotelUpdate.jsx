@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateHotelDetails } from "../features/hotel/HotelSlice";
 import { jwtDecode } from "jwt-decode";
+import { backendurl } from "../backendurl";
 
 function HotelUpdate() {
   // Use state to manage form input values
@@ -33,7 +34,7 @@ function HotelUpdate() {
       console.log(decodedToken)
       const hotelId = decodedToken.id;
       
-      const response = await fetch(`http://localhost:9000/hotel/${hotelId}/update`, {
+      const response = await fetch(`${backendurl}/hotel/${hotelId}/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

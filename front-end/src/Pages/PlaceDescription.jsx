@@ -19,13 +19,14 @@ import { CiCalendar } from "react-icons/ci";
 import NorthGoa from "../Assets/NorthGoa.jpg";
 import { Link } from "react-router-dom";
 import { IoLocation } from "react-icons/io5";
+import { backendurl } from "../backendurl";
 const PlaceDescreption = () => {
   const [productData, setProductData] = useState({});
   const { id, name } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:9000/destinations/${id}`)
+      const response = await axios.get(`${backendurl}/destinations/${id}`)
       .then((response) => {
         console.log(response);
         setProductData(response.data)

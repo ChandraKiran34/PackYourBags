@@ -8,6 +8,7 @@ import AdminBookingList from "./AdminBookingList";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import axios from "axios";
 import { db } from "../FireBase/config";
+import { backendurl } from "../backendurl";
 function AdminHome() {
   // const [userData1, setData1] = useState();
 
@@ -16,7 +17,7 @@ function AdminHome() {
   useEffect(() => {
     async function fetchAllDetails() {
       try {
-        const response = await axios.get('http://localhost:9000/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
+        const response = await axios.get(backendurl+'/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
         // const {users,guides,hotels,agencies} = await response.data;
         setUserData(response.data);
         console.log(response.data)

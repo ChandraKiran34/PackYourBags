@@ -6,6 +6,7 @@ import { FaCar } from "react-icons/fa";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../FireBase/config";
 import axios from "axios";
+import { backendurl } from "../backendurl";
 
 const AdminAgency = () => {
   const [userData, setUserData] = useState(null);
@@ -13,7 +14,7 @@ const AdminAgency = () => {
   useEffect(() => {
     async function fetchAllDetails() {
       try {
-        const response = await axios.get('http://localhost:9000/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
+        const response = await axios.get(backendurl+'/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
         console.log(response)
         setUserData(response.data.agencies);
       } catch (error) {
@@ -29,7 +30,7 @@ const AdminAgency = () => {
     try {
       console.log(agencyId)
       // Send a DELETE request to your backend API to delete the user by ID
-      await axios.delete(`http://localhost:9000/admin/deleteagency/${agencyId}`);
+      await axios.delete(`${backendurl}/admin/deleteagency/${agencyId}`);
       
       // Update the user data in state by filtering out the deleted user
       setUserData(prevData => prevData.filter(user => user._id !== agencyId));

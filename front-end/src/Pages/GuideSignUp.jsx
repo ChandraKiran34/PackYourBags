@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "../CSS/Signin.css";
 import validateForm from "./validateForm";
 import { IoArrowBack } from "react-icons/io5";
+import { backendurl } from "../backendurl";
 
 
 const GuideSignUpComp = () => {
@@ -48,7 +49,7 @@ const GuideSignUpComp = () => {
 
     // Submit form data to backend for user registration
     try {
-      const response = await fetch("http://localhost:9000/guide/register", {
+      const response = await fetch(backendurl+"/guide/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

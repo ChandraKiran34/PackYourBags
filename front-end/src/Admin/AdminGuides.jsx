@@ -6,13 +6,14 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../FireBase/config";
 import axios from "axios";
 import { FaLocationArrow } from "react-icons/fa";
+import { backendurl } from "../backendurl";
 const AdminGuide = () => {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     async function fetchAllDetails() {
       try {
-        const response = await axios.get('http://localhost:9000/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
+        const response = await axios.get(backendurl+'/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
         console.log(response)
         setUserData(response.data.guides);
       } catch (error) {
@@ -29,7 +30,7 @@ const AdminGuide = () => {
     try {
       console.log(guideId)
       // Send a DELETE request to your backend API to delete the user by ID
-      await axios.delete(`http://localhost:9000/admin/deleteguide/${guideId}`);
+      await axios.delete(`${backendurl}/admin/deleteguide/${guideId}`);
       
       // Update the user data in state by filtering out the deleted user
       setUserData(prevData => prevData.filter(user => user._id !== guideId));
