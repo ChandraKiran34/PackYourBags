@@ -12,6 +12,3 @@ router.delete('/deleteagency/:agencyId',deleteAgencyById);
 
 
 export default router;
-
-
-

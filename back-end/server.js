@@ -7,6 +7,8 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import swaggerUi from 'swagger-ui-express';
+import specs from './swagger.js';
 import rfs from "rotating-file-stream";
 
 
@@ -42,6 +44,8 @@ app.use('/destinations',destinationRoutes);
 app.use('/trips', tripRoutes);
 app.use('/admin',adminRoutes);
 
+// Serve Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 const errorHandler = (err,req,res,next)=>{
   console.log("ehere")
@@ -125,11 +129,12 @@ app.use((err,req,res,next)=>{
 
 const PORT = process.env.PORT || 9000;
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server Port ${PORT}`));
-  })
-  .catch((err) => console.log(`error : ${err}`));
+// comment when testing is once done
+// mongoose
+//   .connect(process.env.MONGO_URL)
+//   .then(() => {
+//     console.log('running db');
+//   })
+//   .catch((err) => console.log(`error : ${err}`));
 
-  
+export default app;

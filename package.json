@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "jest-html-reporter": "^3.10.2"
+  }
+}

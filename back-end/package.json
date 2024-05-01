@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -26,6 +27,9 @@
     "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.0.3",
     "redis": "^4.6.13",
-    "rotating-file-stream": "^3.2.1"
-  }
+    "rotating-file-stream": "^3.2.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "test": "jest --reporters=default --reporters=jest-html-reporter"
 }

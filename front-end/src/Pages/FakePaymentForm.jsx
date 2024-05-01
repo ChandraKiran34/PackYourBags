@@ -123,9 +123,10 @@ const FakePaymentForm = () => {
 
       // Send trip data to backend to store in database
       const response = await fetch(backendurl+"/trips/createTrip", {
-        method: "POST",
+        method: 'POST', // Specify the method as POST
         headers: {
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json', // Specify the content type of the request body
         },
         body: JSON.stringify(tripData),
       });

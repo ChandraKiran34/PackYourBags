@@ -6,6 +6,7 @@ import Trip from '../models/Trip.js';
 
 // Controller function to register a new traveller
 export const registerTraveller = async (req, res) => {
+  console.log("register traveller route");
   try {
     // Extract user input from request body
     const { name, email, password, phoneNumber,address } = req.body;
@@ -165,7 +166,3 @@ export const updateTravellerDetailsById = async (req, res) => {
     res.status(500).json({ error: 'Failed to update traveller details' });
   }
 };
-
-
-
-
