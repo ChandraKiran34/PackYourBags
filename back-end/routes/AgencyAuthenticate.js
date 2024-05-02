@@ -12,52 +12,72 @@ const router = express.Router();
 
 /**
  * @swagger
- * /agency/{agencyId}/dashboard:
- *   get:
- *     summary: Get agency dashboard details
+ * /agencies/register:
+ *   post:
+ *     summary: Register a new agency
  *     tags: [Agency]
- *     parameters:
- *       - in: path
- *         name: agencyId
- *         required: true
- *         description: ID of the agency
- *         schema:
- *           type: string
+ *     description: Register a new agency with name, email, password, phone number, number of vehicles available, and location
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *               phoneNumber:
+ *                 type: string
+ *               numberOfVehiclesAvailable:
+ *                 type: integer
+ *               location:
+ *                 type: string
  *     responses:
- *       '200':
- *         description: Successful operation
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Agency'
+ *       '201':
+ *         description: Agency registered successfully
+ *       '400':
+ *         description: Email is already registered
+ *       '500':
+ *         description: Internal server error
  */
 
 /**
  * @swagger
- * /agency/{agencyId}/bookings:
- *   get:
- *     summary: Get bookings for an agency
+ * /agencies/login:
+ *   post:
+ *     summary: Login an agency
  *     tags: [Agency]
- *     parameters:
- *       - in: path
- *         name: agencyId
- *         required: true
- *         description: ID of the agency
- *         schema:
- *           type: string
+ *     description: Login an agency with email and password
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
  *     responses:
  *       '200':
- *         description: Successful operation
+ *         description: Login successful
  *         content:
  *           application/json:
  *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Booking'
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *       '401':
+ *         description: Invalid credentials
+ *       '500':
+ *         description: Internal server error
  */
-
-// Define your agency routes here
-
 
 // Route to register a new agency
 router.post('/register', registerAgency);
