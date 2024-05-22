@@ -1,48 +1,39 @@
-// UserBookings.js
-import React, { useEffect, useState } from "react";
-import Hampi from "../Assets/Hampi.jpg";
+import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import { backendurl } from "../backendurl";
-
-const bookings = [
-  {
-    id: 1,
-    place: "Hampi",
-    guide: "John Doe",
-    hotel: "Luxury Inn",
-    startDate: "2023-12-15",
-    agency: "Travel Explorers",
-    duration: "7 days",
-    image: Hampi, // Add the actual image path
-  },
-  // Add more booking entries as needed
-];
+import {
+  FaMapMarkerAlt,
+  FaUser,
+  FaHotel,
+  FaBuilding,
+  FaPhoneAlt,
+  FaDownload,
+} from "react-icons/fa";
+import { TbFileInvoice } from "react-icons/tb";
 
 function UserBooking() {
   const [userTrips, setUserTrips] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookingDetails = async () => {
       try {
-        console.log("hi 1");
         const token = localStorage.getItem("token");
         const decodedToken = jwtDecode(token);
         const travellerId = decodedToken.userId;
         const response = await fetch(`${backendurl}/trips/allTrips`, {
           headers: {
-            Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+            Authorization: `Bearer ${token}`,
           },
         });
         const data = await response.json();
-        console.log("hi 2");
-        // console.log(data);
+        console.log(data);
         const userTrips = data.filter(
           (trip) => trip.travellerId._id === travellerId
         );
-
-        // console.log(userTrips);
         setUserTrips(userTrips);
+        setIsLoading(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -51,31 +42,42 @@ function UserBooking() {
     fetchBookingDetails();
   }, []);
 
+  const handleDownload = (booking) => {
+    const place = booking?.destinationId.name || "";
+    const guide = booking?.guideId?.name || "";
+    const guidePhone = booking?.guideId?.phoneNumber || ""; // Guide phone number
+    const hotel = booking?.hotelId?.name || "";
+    const hotelPhone = booking?.hotelId?.phoneNumber || ""; // Hotel phone number
+    const agency = booking?.agencyId?.name || "";
+    const agencyPhone = booking?.agencyId?.phoneNumber || ""; // Agency phone number
+    const id = booking?._id || "";
+
+    const cityName = place.split(",")[0];
+    const content = `
+      Invoice ID: ${id}
+      Place: ${cityName}
+      Guide: ${guide} (${guidePhone})
+      Hotel: ${hotel} (${hotelPhone})
+      Agency: ${agency} (${agencyPhone})
+    `;
+
+    const blob = new Blob([content], { type: "text/plain" });
+
+    const a = document.createElement("a");
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = `${cityName} - ${id}.txt`;
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+  };
+
   return (
     <div className="bg-white p-6 rounded">
-      <h2 className="text-3xl font-semibold mb-6">Upcoming Bookings !</h2>
-      {userTrips.length > 0 ? (
-        userTrips.map((trip) => (
-          <div
-            key={trip?._id}
-            className="mb-4 flex space-between border-2 mt-5 p-5 rounded"
-          >
-            <img
-              src={trip?.destinationId.picturePath}
-              alt="trip image"
-              className="w-[20%] h-[20%px]  rounded"
-            />
-            <div className="ml-[2rem] items-center">
-              <p className="text-xl font-semibold">{trip?.place}</p>
-              <p className="text-gray-600">{`Guide: ${trip?.guideId.name}`}</p>
-              <p className="text-gray-600">{`Hotel: ${trip?.hotelId.name}`}</p>
-              <p className="text-gray-600">{`Agency: ${trip?.agencyId.name}`}</p>
-              <p className="text-gray-600">{`Destination: ${trip?.destinationId.name}`}</p>
-              <p className="text-gray-600">{`Top Places: ${trip?.destinationId.placesToVisit}`}</p>{" "}
-            </div>
-          </div>
-        ))
-      ) : (
+      <h2 className="text-3xl font-semibold mb-6">Upcoming Bookings</h2>
+      {isLoading ? (
         <button
           type="button"
           className="bg-indigo-500 text-white font-bold text-center"
@@ -87,6 +89,70 @@ function UserBooking() {
           ></svg>
           Fetching Bookings
         </button>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {userTrips.map((trip) => (
+            <div
+              key={trip?._id}
+              className="border border-gray-300 rounded overflow-hidden shadow-md flex flex-col justify-between max-w-md"
+            >
+              <img
+                src={trip?.destinationId.picturePath}
+                alt="trip"
+                className="w-full h-64 object-cover object-center"
+              />
+              <div className="p-6 flex-grow w-[2200px]">
+                <p className="text-gray-600 font-semibold mb-2 flex items-center">
+                  <TbFileInvoice className="mr-2 text-xl" />
+                  {`Invoice_Id :  ${trip?._id} `}
+                </p>
+                <p className="text-gray-600 mb-2 flex items-center">
+                  <FaMapMarkerAlt className="mr-2" />
+                  {`Destination: ${trip?.destinationId.name}`}
+                </p>
+                <p className="text-gray-700 mb-2 flex items-center">
+                  <FaUser className="mr-2" />
+                  {`Guide: ${trip?.guideId.name}`}{" "}
+                  {trip?.guideId.phoneNumber && (
+                    <span className="text-gray-500 ml-1 flex items-center">
+                      <FaPhoneAlt className="mr-1" />
+                      {trip?.guideId.phoneNumber}
+                    </span>
+                  )}
+                </p>
+                <p className="text-gray-700 mb-2 flex items-center">
+                  <FaHotel className="mr-2" />
+                  {`Hotel: ${trip?.hotelId.name}`}{" "}
+                  {trip?.hotelId.phoneNumber && (
+                    <span className="text-gray-500 ml-1 flex items-center">
+                      <FaPhoneAlt className="mr-1" />
+                      {trip?.hotelId.phoneNumber}
+                    </span>
+                  )}
+                </p>
+
+                <p className="text-gray-700 mb-4 flex items-center">
+                  <FaBuilding className="mr-2" />
+                  {`Agency: ${trip?.agencyId.name}`}{" "}
+                  {trip?.agencyId.phoneNumber && (
+                    <span className="text-gray-500 ml-1 flex items-center ">
+                      <FaPhoneAlt className="mr-1 " />
+                      {trip?.agencyId.phoneNumber}
+                    </span>
+                  )}
+                </p>
+
+                <button
+                  onClick={() => handleDownload(trip)}
+                  className="bg-indigo-500 flex items-center justify-center text-white px-4 py-2 rounded hover:bg-indigo-600 transition-colors duration-300"
+                >
+                  <FaDownload className="mr-2" />
+                  Download Details
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

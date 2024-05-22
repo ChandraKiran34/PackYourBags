@@ -2,7 +2,8 @@ import Agency from "../models/Agency.js";
 import Guide from "../models/Guide.js";
 import Hotel from "../models/Hotel.js";
 import Traveller from "../models/Traveller.js";
-
+import Trip from "../models/Trip.js";
+import Destination from '../models/Destination.js'
 
 
 export const getAllDetails = async(req,res)=>{
@@ -99,3 +100,59 @@ export const deleteGuideById = async (req, res) => {
       res.status(500).json({ message: "Internal server error" });
     }
   };
+
+
+  // export const getBookings = async(req,res) =>{
+  //   try {
+  //     const trips = await Trip.find()
+  //     return res.json({trips : trips})
+  //   } catch (error) {
+  //     console.log(error)
+  //     res.status(500).json({message : error + 'is present here'})
+  //   }
+  // }
+
+  export const getAllTripDetails = async (req, res) => {
+    try {
+      const trips = await Trip.find();
+      const tripDetails = [];
+  
+      for (const trip of trips) {
+        const traveller = await Traveller.findById(trip.travellerId);
+        const guide = await Guide.findById(trip.guideId);
+        const hotel = await Hotel.findById(trip.hotelId);
+        const agency = await Agency.findById(trip.agencyId);
+        const destination = await Destination.findById(trip.destinationId);
+  
+        const singleTrip = {
+          id: trip._id,
+          traveller: {
+            name: traveller.name,
+            email: traveller.email,
+          },
+          guide: {
+            name: guide.name,
+            email: guide.email,
+          },
+          hotel: {
+            name: hotel.name,
+            email: hotel.email,
+          },
+          agency: {
+            name: agency.name,
+            email: agency.email,
+          },
+          destination: destination.name,
+        };
+  
+        tripDetails.push(singleTrip);
+      }
+  
+      res.status(200).json({ trips: tripDetails });
+    } catch (error) {
+      console.error("Error fetching trip details:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
+

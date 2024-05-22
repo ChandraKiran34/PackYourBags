@@ -33,6 +33,8 @@ import HotelSignUpComp from "./Pages/HotelSignUp";
 import HotelSignIn from "./Pages/HotelSignIn";
 import AgencySignUp from "./Pages/AgencySignUp";
 import AgencySignIn from "./Pages/AgencySignIn";
+import Navbar from "./Components/Navbar";
+import GuideBookings from "./Admin/GuideBookings";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -90,6 +92,7 @@ const Router = createBrowserRouter([
     path: "/userdashboard/*",
     element: (
       <PrivateRoute role={"user"}>
+        <Navbar />
         <UserDashBoard />
       </PrivateRoute>
     ),
@@ -142,6 +145,7 @@ const Router = createBrowserRouter([
     path: "/paymentform/tourdetails",
     element: <BookingDetailsCard />,
   },
+  { path: "/guideBookings/:guideId", element: <GuideBookings /> },
 ]);
 
 function App() {

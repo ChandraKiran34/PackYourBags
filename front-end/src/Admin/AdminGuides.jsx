@@ -1,81 +1,59 @@
-import React,{ useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdEmail } from "react-icons/md";
 import { FaPhone, FaUser } from "react-icons/fa6";
-import { CiLocationOn } from "react-icons/ci";
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "../FireBase/config";
-import axios from "axios";
 import { FaLocationArrow } from "react-icons/fa";
+import axios from "axios";
 import { backendurl } from "../backendurl";
+import { Link } from "react-router-dom";
+
 const AdminGuide = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
+  const [selectedGuideBookings, setSelectedGuideBookings] = useState([]);
 
   useEffect(() => {
     async function fetchAllDetails() {
       try {
-        const response = await axios.get(backendurl+'/admin/getDetails'); // Assuming your backend API endpoint is '/api/getAllDetails'
-        console.log(response)
+        const response = await axios.get(backendurl + "/admin/getDetails");
+        console.log(response);
         setUserData(response.data.guides);
       } catch (error) {
-        console.error('Error fetching user details:', error);
+        console.error("Error fetching user details:", error);
       }
     }
 
     fetchAllDetails();
   }, []);
 
-
-
   const handleRemoveGuide = async (guideId) => {
     try {
-      console.log(guideId)
-      // Send a DELETE request to your backend API to delete the user by ID
       await axios.delete(`${backendurl}/admin/deleteguide/${guideId}`);
-      
-      // Update the user data in state by filtering out the deleted user
-      setUserData(prevData => prevData.filter(user => user._id !== guideId));
+      setUserData((prevData) =>
+        prevData.filter((user) => user._id !== guideId)
+      );
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
     }
   };
-  // const userData = [
-  //   {
-  //     name: "sai teja",
-  //     mobileNumber: "9494339652",
-  //     email: "saiteja.p21@iiits.in",
-  //     location: "New Delhi",
-  //     knownLang: ["Languages 1", "Languages 2"],
-  //   },
-  //   {
-  //     name: "Apparao",
-  //     mobileNumber: "9494339654",
-  //     email: "apparao.s21@iiits.in",
-  //     location: "Tirupathi",
-  //     knownLang: ["Languages 1", "Languages 2"],
-  //   },
-  //   {
-  //     name: "chandra",
-  //     mobileNumber: "9494336895",
-  //     email: "chandra.b21@iiits.in",
-  //     location: "Banguluru",
-  //     knownLang: ["Languages 1", "Languages 2"],
-  //   },
-  //   {
-  //     name: "satwik",
-  //     mobileNumber: "9110364244",
-  //     email: "satwik.p21@iiits.in",
-  //     location: "Chennai",
-  //     knownLang: ["Languages 1", "Languages 2"],
-  //   },
-  // ];
+
+  const getBookings = async (guideId) => {
+    try {
+      const response = await axios.get(
+        `${backendurl}/admin/guideBookings/${guideId}`
+      );
+      console.log(response.data.bookings);
+      setSelectedGuideBookings(response.data.bookings);
+    } catch (error) {
+      console.error("Error fetching bookings:", error);
+    }
+  };
 
   return (
-    <div className="bg-white p-6  ml-7">
+    <div className="bg-white p-6 ml-7">
       <h1 className="font-bold text-4xl p-5">Registered Guides</h1>
       <ul className="flex">
         {userData?.map((data, index) => (
           <div className="border border-r-2 w-[20vw] p-4" key={index}>
-            <h2 className="text-xl  mb-4 flex">
+            <h2 className="text-xl mb-4 flex">
               <FaUser className="mr-2 font-[400]" />
               <h1 className="font-semibold">{data.name}</h1>
             </h2>
@@ -91,23 +69,28 @@ const AdminGuide = () => {
               <MdEmail className="mt-1" />
               <p className="pl-1">Email: {data.email}</p>
             </p>
-            {/* <div>
-              <p className="text-gray-600 font-semibold mb-2 ">
-                Languages Known:
-              </p>
-              <ul className=" pl-6">
-                {data.knownLang.map((language, index) => (
-                  <li key={index} className="flex">
-                    <CiLocationOn className="mt-1 font-[600]" />
-                    <li className="ml-2">{language}</li>
-                  </li>
-                ))}
-              </ul>
-            </div> */}
             <div className="flex justify-center items-center">
-              <button className="p-2 border rounded mt-[2rem] bg-[#f85451] text-white font-semibold">View Bookings</button>
-              <button className="p-2 border rounded mt-[2rem] bg-[#f85451] text-white font-semibold" onClick={() => handleRemoveGuide(data?._id)}>Remove</button>
+              <Link
+                to={`/guideBookings/${data._id}`}
+                className="p-2 border rounded mt-[2rem] bg-[#f85451] text-white font-semibold"
+              >
+                View Bookings
+              </Link>
+              <button
+                className="p-2 border rounded mt-[2rem] bg-[#f85451] text-white font-semibold"
+                onClick={() => handleRemoveGuide(data?._id)}
+              >
+                Remove
+              </button>
             </div>
+            {selectedGuideBookings.length > 0 &&
+              selectedGuideBookings.map((booking, index) => (
+                <div key={index}>
+                  <p>Traveller: {booking.travellerId.name}</p>
+                  <p>Email: {booking.travellerId.email}</p>
+                  <p>Destination: {booking.destinationId.name}</p>
+                </div>
+              ))}
           </div>
         ))}
       </ul>
