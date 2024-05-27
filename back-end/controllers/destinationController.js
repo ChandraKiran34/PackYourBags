@@ -54,18 +54,18 @@ export const createDestination = async (req, res) => {
 
 export const getDestinations = async (req, res) => {
   try {
-    let destinations = await redis.get("destinations");
+    // let destinations = await redis.get("destinations");
 
-    if (destinations) {
-      console.log("Cache hit");
-      return res.status(200).json(destinations);
-    }
-    console.log("Cache miss");
+    // if (destinations) {
+    //   console.log("Cache hit");
+    //   return res.status(200).json(destinations);
+    // }
+    // console.log("Cache miss");
     // If destinations are not cached, retrieve them from the database
-    destinations = await Destination.find({});
+    let destinations = await Destination.find({});
     
     // Set the destinations in the cache
-    await redis.set("destinations", JSON.stringify(destinations)); // Redis stores strings
+      // await redis.set("destinations", JSON.stringify(destinations)); // Redis stores strings
     // Return the destinations to the client
     return res.status(200).json(destinations);
   } catch (error) {
